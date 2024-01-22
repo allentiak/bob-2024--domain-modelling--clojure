@@ -113,7 +113,11 @@
   (s/keys :req [:tennis/player]))
 
 (s/def :tennis/kind
-  #{:tennis.kind/points :tennis.kind/forty :tennis.kind/deuce :tennis.kind/advantage :tennis.kind/game})
+  (s/or :points    :tennis.kind/points
+        :forty     :tennis.kind/forty
+        :deuce     :tennis.kind/deuce
+        :advantage :tennis.kind/advantage
+        :game      :tennis.kind/game))
 
 (s/def :tennis/score3
   (s/keys :req [:tennis/kind]
@@ -135,21 +139,24 @@
 (comment
   (s/valid? :tennis.kind/points valid-score1)
   ;; => true
+
   (s/valid? :tennis/kind valid-score1)
-  ;; => false
-  ;; this one should be true...
+  ;; => true
 
   (s/valid? :tennis/score3 invalid-score2)
   ;; => false
 
   (s/valid? :tennis.kind/forty valid-score2-forty)
   ;; => true
+
   (s/valid? :tennis/kind valid-score2-forty)
-  ;; => false
-  ;; this one should be true...
+  ;; => true
 
   (s/valid? :tennis.kind/deuce valid-score3-deuce)
   ;; => true
 
   (s/valid? :tennis.kind/advantage valid-score4-advantage)
+  ;; => false
+  ;; FIXME! this should be true
+  ;; either the example or the spec are wrong
   ,)
