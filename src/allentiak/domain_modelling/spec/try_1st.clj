@@ -3,19 +3,20 @@
 
 ;; Invariants: First try
 
-(s/def :tennis/points0 int?)
+(s/def :tennis/points int?)
 
-(s/def :tennis/player-one1 :tennis/points0)
-(s/def :tennis/player-two1 :tennis/points0)
+(s/def :tennis/player-one :tennis/points)
+(s/def :tennis/player-two :tennis/points)
 
-(s/def :tennis/score1
-  (s/keys :req [:tennis/player-one1
-                :tennis/player-two1]))
+(s/def :tennis/score
+  (s/keys :req [:tennis/player-one
+                :tennis/player-two]))
 
-(def invalid-score1-1
-  {:tennis/player-one1 1000
-   :tennis/player-two1 -15})
+;; First example, revisited
+(def invalid-score-1
+  {:tennis/player-one 1000
+   :tennis/player-two -15})
 
 (comment
-  (s/valid? :tennis/score1 invalid-score1-1))
+  (s/valid? :tennis/score invalid-score-1))
   ;; => true

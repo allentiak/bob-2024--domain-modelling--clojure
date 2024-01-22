@@ -3,38 +3,40 @@
 
 ;; Enforcing Invariants: Second try
 
-(s/def :tennis/points1
+(s/def :tennis/points
   #{:love :fifteen :thirty :forty})
 
-(s/def :tennis/player-one2 :tennis/points1)
-(s/def :tennis/player-two2 :tennis/points1)
+(s/def :tennis/player-one :tennis/points)
+(s/def :tennis/player-two :tennis/points)
 
-(s/def :tennis/score2
-  (s/keys :req [:tennis/player-one2
-                :tennis/player-two2]))
+(s/def :tennis/score
+  (s/keys :req [:tennis/player-one
+                :tennis/player-two]))
 
-(def invalid-score1-2
-  {:tennis/player-one2 1000
-   :tennis/player-two2 -15})
+;; First Example, revisited
+(def invalid-score-1
+  {:tennis/player-one 1000
+   :tennis/player-two -15})
 
 (comment
-  (s/valid? :tennis/score2 invalid-score1-2)
+  (s/valid? :tennis/score invalid-score-1)
   ;; => false
-  (s/explain :tennis/score2 invalid-score1-2)
+  (s/explain :tennis/score invalid-score-1)
   ;; for some strange reason, I get nil.
   ;; I should get the explanation...
   ,)
 
 (def valid-score1
-  {:tennis/player-one2 :fifteen
-   :tennis/player-two2 :love})
+  {:tennis/player-one :fifteen
+   :tennis/player-two :love})
 
-(def invalid-score2 {:tennis/player-one2 :forty
-                     :tennis/player-two2 :forty})
+(def invalid-score2
+  {:tennis/player-one :forty
+   :tennis/player-two :forty})
 
 (comment
-  (s/valid? :tennis/score2 valid-score1)
+  (s/valid? :tennis/score valid-score1)
   ;; => true
-  (s/valid? :tennis/score2 invalid-score2)
+  (s/valid? :tennis/score invalid-score2)
   ;; => true
   ,)
