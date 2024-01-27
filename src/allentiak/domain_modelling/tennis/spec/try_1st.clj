@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.spec.try-1st
+(ns allentiak.domain-modelling.tennis.spec.try-1st
   (:require [clojure.spec.alpha :as s]))
 
 ;; Invariants: First try

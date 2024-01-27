@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.malli.try-3rd
+(ns allentiak.domain-modelling.tennis.malli.try-3rd
   (:require [malli.core :as m]))
 
 ;; Enforcing Invariants: Third try

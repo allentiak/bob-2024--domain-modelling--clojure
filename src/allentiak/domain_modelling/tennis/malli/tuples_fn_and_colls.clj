@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.malli.tuples-fn-and-colls
+(ns allentiak.domain-modelling.tennis.malli.tuples-fn-and-colls
   (:require
    [malli.core :as m]
    [malli.instrument :as mi]))

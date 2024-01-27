@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.spec.try-2nd
+(ns allentiak.domain-modelling.tennis.spec.try-2nd
   (:require [clojure.spec.alpha :as s]))
 
 ;; Enforcing Invariants: Second try

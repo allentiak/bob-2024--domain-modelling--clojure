@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.malli.try-1st
+(ns allentiak.domain-modelling.tennis.malli.try-1st
   (:require [malli.core :as m]))
 
 ;; Invariants: First try

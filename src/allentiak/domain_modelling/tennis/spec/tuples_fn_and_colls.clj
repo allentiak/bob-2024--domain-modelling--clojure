@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.spec.tuples-fn-and-colls
+(ns allentiak.domain-modelling.tennis.spec.tuples-fn-and-colls
   (:require
    [clojure.spec.alpha :as s]
    [clojure.spec.test.alpha :as st]))

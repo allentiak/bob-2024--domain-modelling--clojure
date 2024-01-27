@@ -1,4 +1,4 @@
-(ns allentiak.domain-modelling.malli.try-0th
+(ns allentiak.domain-modelling.tennis.malli.try-0th
   (:require
    [malli.core :as m]))
 
