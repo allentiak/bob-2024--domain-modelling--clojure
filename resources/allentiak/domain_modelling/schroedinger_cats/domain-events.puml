@@ -1,0 +1,57 @@
+@startuml
+!include styles.puml
+
+title Event Storming Diagram
+
+ContextBoundary(CTX, "Schrödinger's Cats") {
+     DomainEvent(DE01, "First Scientist Selected","")
+     DomainEvent(DE02, "First Experiment Started","")
+     DomainEvent(DE03, "Deck Shuffled","")
+     DomainEvent(DE04, "Cards Dealt","")
+     DomainEvent(DE05, "Research Deck Created","")
+     DomainEvent(DE06, "Amount of Experiment Boxes Announced","")
+     DomainEvent(DE07, "First Active Scientist Selected","")
+     DomainEvent(DE08, "Hypothesis Stated","")
+     DomainEvent(DE09, "Findings Shown","")
+     DomainEvent(DE10, "Research Drawn","")
+     DomainEvent(DE11, "New Active Scientist Selected","")
+     DomainEvent(DE12, "Hypothesis Dared","")
+     DomainEvent(DE13, "Hypothesis Observed","")
+     DomainEvent(DE14, "Boxes Observed","")
+     DomainEvent(DE15, "Hypothesis Debunked","")
+     DomainEvent(DE16, "Hypothesis Not Debunked","")
+     DomainEvent(DE17, "Hypothesis Author Eliminated","")
+     DomainEvent(DE18, "Active Scientist Eliminated","")
+     DomainEvent(DE19, "Experiment Ended","")
+
+DE01 -right-> DE02
+DE02 -right-> DE03
+DE03 -right-> DE04
+DE04 -right-> DE05
+DE05 -right-> DE06
+DE06 -right-> DE07
+DE07 -right-> DE08
+DE08 -right-> DE09
+DE09 -right-> DE10
+DE10 -right-> DE11
+
+DE11 -down-> DE12
+DE12 -up-> DE09
+
+DE11 -right-> DE13
+
+DE13 -right-> DE14
+
+DE14 -down-> DE15
+DE14 -down-> DE16
+
+DE15 -right-> DE17
+DE16 -down-> DE18
+DE17 -down-> DE19
+DE18 -down-> DE19
+
+DE19 -left-> DE01
+
+}
+
+@enduml
