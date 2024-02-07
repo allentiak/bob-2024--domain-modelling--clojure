@@ -4,22 +4,22 @@
 (s/def :aggregates/scientist
   string?)
 
-(s/fdef first-scientist-selected
+(s/fdef events/first-scientist-selected
   :args (s/cat (s/coll-of :aggregates/scientist))
   :ret :aggregates/scientist)
 
-(s/fdef first-experiment-started
+(s/fdef events/first-experiment-started
   :args :aggregates/scientist
   :ret :aggregates/scientist)
 
-(s/fdef deck-shuffled
+(s/fdef events/deck-shuffled
   :args :entity/unshuffled-deck
   :ret :entity/shuffled-deck)
 
-(s/fdef cards-dealt
+(s/fdef events/cards-dealt
   :args (s/cat (s/coll-of :aggregates/scientist))
   :ret :aggregates/scientist)
 
-(s/fdef research-deck-created
+(s/fdef events/research-deck-created
   :args (s/cat (s/coll-of :aggregates/scientist))
   :ret :aggregates/scientist)
