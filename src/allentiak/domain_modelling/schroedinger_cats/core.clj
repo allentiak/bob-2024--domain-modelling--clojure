@@ -9,10 +9,11 @@
 
 (s/def :entities/card-hand
   ;; should this be an aggregate?
+  ;; at this point, there is no need to differenciate between these two
   s/coll-of :aggregates/card)
 
 (s/def :aggregates/scientist
-  (s/tuple :entities/scientist-name :entities/card-hand))
+  (s/tuple :entities/scientist-name :entities/card-hand :last-date-of-documentary-watch))
 
 (s/def :aggregates/participating-scientists
   (s/coll-of :aggregates/scientist))
@@ -24,6 +25,8 @@
   :args :aggregates/participating-scientists
   :ret
   ;; should I also return the "first-scientist-selected" and "first-experiment-started" events?
+  ;; not at this point - we are modelling only the internal game engine logic, not its inputs or
+  ;; outputs
        :aggregates/first-scientist)
 
 (s/fdef events/first-scientist-selected
