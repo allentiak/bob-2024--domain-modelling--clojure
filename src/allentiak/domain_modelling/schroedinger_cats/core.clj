@@ -1,68 +1,53 @@
 (ns allentiak.domain-modelling.schroedinger-cats.core
+  "Notes:
+  - At this point, we are focusing on modeling the `entities` and `commands`.
+  - At this point, there is no point in differentiating between `entities` and `aggregates`.
+  - At this point, since we are focusing on only one bounded context (this is, the actual game logic), the events themselves don't need to be modeled as functions, nor they need to be passed as parameters.
+  - Notwithstanding the above point, it is important to know when game `events` happen: since we are modeling everything in one file, they are being added as comments."
   (:require [clojure.spec.alpha :as s]))
 
 (s/def :entities/scientist-name
   string?)
 
-(s/def :aggregates/card
+(s/def :entities/card
   #{:box-card :quantum-card})
 
 (s/def :entities/card-hand
-  ;; should this be an aggregate?
-  ;; at this point, there is no need to differenciate between these two
-  s/coll-of :aggregates/card)
+  s/coll-of :entities/card)
 
-(s/def :aggregates/scientist
+(s/def :entities/scientist
   (s/tuple :entities/scientist-name :entities/card-hand :last-date-of-documentary-watch))
 
-(s/def :aggregates/participating-scientists
-  (s/coll-of :aggregates/scientist))
+(s/def :entities/participating-scientists
+  (s/coll-of :entities/scientist))
 
-(s/def :aggregates/first-scientist
-  :aggregates/scientist)
+(s/def :entities/first-scientist
+  :entities/scientist)
 
 (s/fdef commands/select-first-scientist
-  :args :aggregates/participating-scientists
-  :ret
-  ;; should I also return the "first-scientist-selected" and "first-experiment-started" events?
-  ;; not at this point - we are modelling only the internal game engine logic, not its inputs or
-  ;; outputs
-       :aggregates/first-scientist)
+  :args :entities/participating-scientists
+  :ret :entities/first-scientist)
 
-(s/fdef events/first-scientist-selected
-  :args :aggregates/participating-scientists
-  :ret :aggregates/scientist)
+;; events/first-scientist-selected
 
-(s/fdef events/first-experiment-started
-  :args (s/cat :aggregates/first-scientist :aggregates/participating-scientists)
-  :ret (s/cat :aggregates/first-scientist :aggregates/participating-scientists))
+;; events/first-experiment-started
 
-(s/def :aggregates/unshuffled-deck
-  (s/coll-of :aggregates/card))
+(s/def :entities/unshuffled-deck
+  (s/coll-of :entities/card))
 
-(s/def :aggregates/shuffled-deck
-  (s/coll-of :aggregates/card))
+(s/def :entities/shuffled-deck
+  (s/coll-of :entities/card))
 
 (s/fdef commands/shuffle-deck
-  :args :aggregates/unshuffled-deck
-  :ret
-  ;; should this command also return the "deck-shuffled" event?
-       :aggregates/shuffled-deck)
+  :args :entities/unshuffled-deck
+  :ret :entities/shuffled-deck)
 
-(s/fdef events/deck-shuffled
-  :args :entity/unshuffled-deck
-  :ret :entity/shuffled-deck)
+;; events/deck-shuffled
 
 (s/fdef commands/deal-cards
-  :args (s/cat :aggregates/participating-scientists :aggregates/shuffled-deck)
-  :ret
-  ;; should I also return the "cards-dealt" and "research-deck-created" events?
-       (s/cat :aggregates/participating-scientists :aggregates/shuffled-deck))
+  :args (s/cat :entities/participating-scientists :entities/shuffled-deck)
+  :ret (s/cat :entities/participating-scientists :entities/shuffled-deck))
 
-(s/fdef events/cards-dealt
-  :args (s/cat :aggregates/participating-scientists)
-  :ret :aggregates/scientist)
+;; events/cards-dealt
 
-(s/fdef events/research-deck-created
-  :args (s/cat :aggregates/participating-scientists)
-  :ret :aggregates/scientist)
+;; events/research-deck-created
