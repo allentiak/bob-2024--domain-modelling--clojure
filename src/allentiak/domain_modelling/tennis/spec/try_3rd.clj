@@ -1,7 +1,7 @@
 (ns allentiak.domain-modelling.tennis.spec.try-3rd
   (:require [clojure.spec.alpha :as s]))
 
-;; Enforcing Invariants: Third try
+;; Invariant Enforcement: Better Solution
 
 (s/def :tennis/points
   ;; now, without :forty
@@ -44,6 +44,10 @@
   ;; => true
   (s/valid? :tennis.kind/points invalid-kind--points)
   ;; => false
+  (s/explain :tennis.kind/points invalid-kind--points)
+  ;; nil
+  ;; :forty - failed: #{:thirty :fifteen :love} in: [:tennis/player-one] at: [:tennis/player-one] spec: :tennis/points
+  ;; :forty - failed: #{:thirty :fifteen :love} in: [:tennis/player-two] at: [:tennis/player-two] spec: :tennis/points
   ,)
 
 

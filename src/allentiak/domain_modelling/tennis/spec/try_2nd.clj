@@ -1,7 +1,7 @@
 (ns allentiak.domain-modelling.tennis.spec.try-2nd
   (:require [clojure.spec.alpha :as s]))
 
-;; Enforcing Invariants: Second try
+;; Invariant Enforcement: Second try
 
 (s/def :tennis/points
   #{:love :fifteen :thirty :forty})
@@ -22,21 +22,22 @@
   (s/valid? :tennis/score invalid-score-1)
   ;; => false
   (s/explain :tennis/score invalid-score-1)
-  ;; for some strange reason, I get nil.
-  ;; I should get the explanation...
+  ;; nil
+  ;; 1000 - failed: #{:forty :thirty :fifteen :love} in: [:tennis/player-one] at: [:tennis/player-one] spec: :tennis/points
+  ;; -15 - failed: #{:forty :thirty :fifteen :love} in: [:tennis/player-two] at: [:tennis/player-two] spec: :tennis/points
   ,)
 
-(def valid-score1
+(def valid-score-1
   {:tennis/player-one :fifteen
    :tennis/player-two :love})
 
-(def invalid-score2
+(def invalid-score-2
   {:tennis/player-one :forty
    :tennis/player-two :forty})
 
 (comment
-  (s/valid? :tennis/score valid-score1)
+  (s/valid? :tennis/score valid-score-1)
   ;; => true
-  (s/valid? :tennis/score invalid-score2)
+  (s/valid? :tennis/score invalid-score-2)
   ;; => true
   ,)

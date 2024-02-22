@@ -1,7 +1,7 @@
 (ns allentiak.domain-modelling.tennis.spec.try-1st
   (:require [clojure.spec.alpha :as s]))
 
-;; Invariants: First try
+;; Invariant Enforcement: First try
 
 (s/def :tennis/points int?)
 

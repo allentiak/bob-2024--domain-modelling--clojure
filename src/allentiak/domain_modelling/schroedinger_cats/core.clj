@@ -13,7 +13,7 @@
   #{:box-card :quantum-card})
 
 (s/def :entities/card-hand
-  s/coll-of :entities/card)
+  (s/coll-of :entities/card))
 
 (s/def :entities/scientist
   (s/tuple :entities/scientist-name :entities/card-hand :last-date-of-documentary-watch))
