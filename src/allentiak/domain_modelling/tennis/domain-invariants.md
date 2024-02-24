@@ -3,7 +3,8 @@
 ## Invariants (Rules)
 
 * Player points: Love (== 0), 15, 30, 40
-* 40 points && win the ball ⇒ win set
+* 40 points && win the ball for one player,
+  and not 40 (or "less than 40") for the other ⇒ win set
 * both player 40 ⇒ players are deuce
 * when deuce:
   * the winner of a ball ⇒ advantage
