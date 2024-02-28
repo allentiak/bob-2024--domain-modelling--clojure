@@ -1,4 +1,4 @@
-# Domain Modeling with Clojure
+# Domain Modelling with Clojure
 
 A DDD experiment.
 
@@ -27,7 +27,7 @@ information in generated `pom.xml` by updating `build.clj`.
 
 If you don't want the `pom.xml` file in your project, you can remove it. The `ci` task will
 still generate a minimal `pom.xml` as part of the `uber` task, unless you remove `version`
-from `build.clj`.
+from `build.clj**.
 
 Run that uberjar:
 
@@ -36,9 +36,18 @@ Run that uberjar:
 
 ## Hacking
 
+### Starting a REPL
+
 Start a REPL from the terminal:
 
     % clojure -M:repl
+
+### Quick Start via Github Codespaces (Web IDE)
+If you have configured your Github account, you can start the project without any other setup.  It will open a web-based vscode editor backed by a Github Codespace VM. (Codespaces is Github's hosted Devcontainer solution)
+
+[![Open in Github Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/allentiak/bob-2024--domain-modelling--clojure)
+
+You can also clone this repo locally, and using vscode (with the devcontainer plugin), and Docker Desktop, run an isolated, fully setup version of this application locally. Open the repo in your editor and run the command `Dev Containers: Open Folder in Container...`.
 
 
 ## License

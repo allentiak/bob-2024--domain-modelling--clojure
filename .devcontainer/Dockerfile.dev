@@ -1,0 +1,15 @@
+FROM clojure:tools-deps
+
+# Extra tools
+RUN apt-get update && apt-get install -y gpg curl
+
+# Install new and clj-new (prefer new, but clj-new is needed for some templates)
+
+RUN clojure -Ttools install-latest :lib io.github.seancorfield/deps-new :as new
+RUN clojure -Ttools install-latest :lib com.github.seancorfield/clj-new :as clj-new
+
+# Add Babashka
+
+RUN curl -sLO https://raw.githubusercontent.com/babashka/babashka/master/install \
+  && chmod +x install \
+  && ./install --static
