@@ -1,11 +1,21 @@
 # Domain Modelling with Clojure
 
-A DDD experiment.
-
+Repo for the BOB 2024 "(Functional) Domain Modeling in Practice" workshop.
+https://github.com/allentiak/bob-2024--domain-modelling--clojure
 
 ## About
 
-Repo for the "DDD Modeling with Clojure" workshop.
+Repo for the ["(Functional) Domain Modeling in Practice" workshop](https://miro.com/app/board/uXjVNx-wLGg=/), by [Marco Emrich](https://github.com/marcoemrich) and [Leandro Doctors](https://github.com/allentiak) (Clojure version).
+[BOB 2024 version](https://bobkonf.de/2024/doctors-emrich.html).
+
+[Supporting material (Miro board)](https://miro.com/app/board/uXjVNx-wLGg=/).
+
+## Exercise
+
+Model the ["Schrödinger's Cats"]((https://9thlevel.com/products/schrodingers-cats?_pos=1&_psq=schro&_ss=e&_v=1.0)) betting board game using the technique.
+["Schrödinger's Cats" Rules](https://rules.dized.com/game/lo5Bc1qAQMOKMHacEYqWxA/schrodingers-cats).
+
+You can find a possible (and partial) solution in the `solution-proposals/leandro` branch.
 
 ## Usage
 
